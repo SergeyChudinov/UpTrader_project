@@ -1,0 +1,34 @@
+{
+  "projectSelection": [
+    {
+      "id": 1,
+      "name": "Проект №1",
+      "description": "Первый герой в рейтинге!"
+    },
+    {
+      "id": 2,
+      "name": "Проект №2",
+      "description": "Скрывающийся в тени"
+    },
+    {
+      "id": 3,
+      "name": "Проект №3",
+      "description": "Как аквамен, но не из DC"
+    },
+    {
+      "id": "5302c06e-4ca2-4ddb-977c-ec1bf405104d",
+      "name": "Работа по дому",
+      "description": "Планы по работе по дому на ближайшую неделю"
+    },
+    {
+      "id": "bc383ec1-2106-4480-bfca-9b6f8d777b66",
+      "name": "Сделать проект по React",
+      "description": "Разрешается использовать ТОЛЬКО!!!:\nCreate-react-app и все библиотеки с ним связанные\n\ntypescript или prop-types будет плюсом\n\nreact-helmet\n\nredux\\react-redux\n\nsass и\\или styled-jsx, classnames\n\nbabel\\eslint\\prettier\n\nЛюбая библиотека для drag-n-drop\n\nЛюбая библиотека для удобной работы с текстом(например tinymce)\n\nЛюбая библиотека для работы с файлами\n\nЛюбая библиотека для работы со временем"
+    },
+    {
+      "id": "f74494ed-4638-40d4-a430-cd0ed046900e",
+      "name": "Сергей Чудинов",
+      "description": "1"
+    }
+  ]
+}

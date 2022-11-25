@@ -1,0 +1,17 @@
+.card_link{
+    text-decoration: none;
+    color: black;
+}
+.card{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid rgb(171, 164, 164);
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.16);
+}
+.cross_button{
+    background-color: #fff;
+    border: none;
+}
