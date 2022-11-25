@@ -1,0 +1,66 @@
+.modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(178, 80, 188, 0.8);
+}
+.modal_block{
+    position: relative;
+}
+.form_border{
+    padding: 25px;
+    width: 400px;
+    height: 300px;
+    box-shadow: 0 15px 15px rgb(0 0 0 / 16%);
+    background-color: #fbf7f7;
+    display: grid;
+    grid-template-rows: 23% 63% 10%;
+    grid-row-gap: 4%;
+    position: relative;
+
+}
+.close_modal{
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: -40px;
+    z-index: 10;
+    font-size: 5rem;
+    width: 5rem;
+    height: 5rem;
+    line-height: 5rem;
+    text-align: center;
+    background: transparent;
+    color: #ffffff;
+    border: none;
+}
+.form_setName{
+    /* display: block; */
+    display: grid;
+    grid-template-rows: 50% 0 50%;
+}
+.form_setName_label, .form_setDescription_label{
+    font-size: 24px;
+}
+.form_setName_input{
+    border: 2px solid rgba(85, 81, 81, 0.16);
+    border-radius: 5px;
+    width: 100%;
+    /* background-color: rgb(241, 236, 236); */
+}
+.form_setDescription_input{
+    height: 130px;
+    width: 100%;
+    resize: none;
+}
+.form_button{
+    width: 100%;
+}
