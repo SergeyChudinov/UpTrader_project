@@ -71,9 +71,7 @@ const ProjectsAddForm = (props) => {
 
     return (
         <> 
-
             {items}
-
         </>
     )
 }

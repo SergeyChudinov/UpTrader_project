@@ -1,10 +1,8 @@
 const initialState = {
-    projects: [],
-    heroesLoadingStatus: 'idle',
-    filters: 'all'
+    projects: []
 }
 
-const reducer = (state = initialState, action) => {
+const projectsReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'PROJECTS_FETCHING':
             return {
@@ -38,4 +36,4 @@ const reducer = (state = initialState, action) => {
     }
 }
 
-export default reducer;
+export default projectsReducer;

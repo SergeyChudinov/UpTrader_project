@@ -1,0 +1,40 @@
+.task_link{
+    text-decoration: none;
+    color: #000;
+}
+.container{
+    /* display: flex;
+    justify-content: space-between; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 20px;
+    /* grid-template-rows: 1000px; */
+}
+.task_div{
+
+}
+.task_column{
+    /* width: 100%;
+    height: 100%; */
+    border: 1px solid  rgb(164, 160, 160);
+    border-radius: 5px;
+    min-height: 500px;
+    padding: 20px;
+}
+
+.task{
+    border: 1px solid rgb(166, 162, 162);
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.delate_task{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: transparent;
+    color: #ffffff;
+    border: none;
+}

@@ -12,7 +12,7 @@ import './StartPage.css';
 // import Spinner from '../spinner/Spinner';
 
 const StartPage = () => {
-    const {projects} = useSelector(state => state);
+    const {projects} = useSelector(state => state.projects);
     const dispatch = useDispatch();
     const {request} = useHttp();
 
@@ -33,7 +33,7 @@ const StartPage = () => {
 
     const renderProject = (arr) => {
         if (arr.length === 0) {
-            return <h5 className="text-center mt-5">Героев пока нет</h5>
+            return <h5>Проектов пока нет</h5>
         }
 
         return arr.map(({id, ...props}) => {
