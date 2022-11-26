@@ -30,5 +30,32 @@
       "name": "Сергей Чудинов",
       "description": "1"
     }
+  ],
+  "taskSelection": [
+    {
+      "id": "9f7a64bc-f9b6-47bd-92dd-a865dee68c15",
+      "header": "Сергей Чудинов",
+      "description": "asdasdsa",
+      "dateOfCreation": "2022-11-26T14:52:48.009Z",
+      "projectId": "1",
+      "status": "Queue"
+    },
+    {
+      "id": "87ba52ed-5c79-48b1-825e-dcb2830633b2",
+      "header": "Сергей Чудинов",
+      "description": "fghfg",
+      "dateOfCreation": "2022-11-26T15:20:40.397Z",
+      "projectId": "1",
+      "status": "Queue"
+    },
+    {
+      "id": "65e86fe5-224d-4fbb-a446-35f7ecfb0620",
+      "header": "Сергей Чудинов",
+      "description": "43543",
+      "dateOfCreation": "2022-11-26T16:53:42.654Z",
+      "expirationDate": "2022-11-27",
+      "projectId": "2",
+      "status": "Queue"
+    }
   ]
 }

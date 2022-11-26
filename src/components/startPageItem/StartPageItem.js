@@ -2,7 +2,7 @@ import {useHttp} from '../../hooks/http.hook';
 import { useDispatch } from 'react-redux';
 import {useNavigate} from "react-router-dom";
 
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 
 import { projectsFetchingError, projectsDelete } from '../../actions';
 
@@ -15,12 +15,12 @@ const StartPageItem = ({name, description, id}) => {
     const {request} = useHttp();
     const navigate = useNavigate();
 
-    const onDelete = (id) => {
-        
+    const onDelete = (id) => {      
         request(`http://localhost:3001/projectSelection/${id}`, 'DELETE')
             .then(() => dispatch(projectsDelete(id)))
             .catch(() => dispatch(projectsFetchingError()))
     }
+    
     const openProject = (e) => {
         if (e.target.tagName === 'IMG') return;
         navigate(`/task/${id}`);
