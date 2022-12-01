@@ -11,6 +11,7 @@
     /* grid-template-rows: 1000px; */
 }
 .task_div{
+    /* height: 100%; */
 
 }
 .task_column{
@@ -18,16 +19,35 @@
     height: 100%; */
     border: 1px solid  rgb(164, 160, 160);
     border-radius: 5px;
-    min-height: 500px;
-    padding: 20px;
+    min-height: 528px;
+    padding: 15px;
 }
 
 .task{
-    border: 1px solid rgb(166, 162, 162);
+    /* border: 1px solid rgb(166, 162, 162); */
+    border-radius: 5px;
+    box-shadow: 19px 15px 68px -17px #000000;
+    /* padding: 10px; */
+    /* margin-bottom: 10px; */
+    position: relative;
+    margin-bottom: 15px;
+    cursor: move;
+}
+.task_top{
     border-radius: 5px;
     padding: 10px;
-    margin-bottom: 10px;
-    position: relative;
+    
+}
+
+.task_bottom{
+    padding: 10px;
+}
+.task_text{
+    font-size: 14px;
+    font-style: italic;
+}
+.task_date{
+    font-size: 14px;
 }
 
 .delate_task{
@@ -37,4 +57,14 @@
     background: transparent;
     color: #ffffff;
     border: none;
+    cursor: pointer;
+}
+.gear_open{
+    position: absolute;
+    top: 1px;
+    right:38px;
+    background: transparent;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
 }

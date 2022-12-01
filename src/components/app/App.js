@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 
 // import AppHeader from "../appHeader/AppHeader";
-import StartPage from '../../components/startPage/StartPage';
+import ProjectPage from '../../components/projectPage/ProjectPage';
 import TaskPage from '../taskPage/TaskPage';
 
 
@@ -21,7 +21,7 @@ const App = () => {
         {/* <AppHeader/> */}
         <main>
           <Routes>
-            <Route path="/" element={<StartPage/>}/>              
+            <Route path="/" element={<ProjectPage/>}/>              
             <Route path="/task/:id" element={<TaskPage/>}/>
           </Routes>
         </main>

@@ -1,27 +1,21 @@
 import {useHttp} from '../../hooks/http.hook';
-
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-
 import { v4 as uuidv4 } from 'uuid';
-
 import { tasksFetchingError, tasksAdd } from '../../actions';
 
 import './TaskAddForm.css';
+
 import cross from '../../assets/cross.png';
-// import Spinner from '../spinner/Spinner';
+import file from '../../assets/file.png';
 
 const TaskAddForm = (props) => {
     const dispatch = useDispatch();
     const {request} = useHttp();
-
     const [headerTask, setHeaderTask,] = useState('');
     const [descriptionTask, setDescriptionTask,] = useState('');
     const [expirationDateTask, setExpirationDateTask] = useState('');
-
-    // const [statusTask, setStatusTask] = useState('');
-    
-    // const [showModal, setShowModal] = useState(props.show);
+    const [priorityTask, setPriorityTask] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -30,7 +24,9 @@ const TaskAddForm = (props) => {
             header: `${headerTask}`,
             description: `${descriptionTask}`,
             dateOfCreation: new Date(),
-            expirationDate: expirationDateTask,
+            expirationDate: `${expirationDateTask}`,
+            priority: `${priorityTask}`,
+            attachedFiles: [],
 
             projectId: props.projectId,
             status: "Queue"
@@ -51,7 +47,7 @@ const TaskAddForm = (props) => {
                     <form onSubmit={(e) => handleSubmit(e)}
                         className="task_form">
                         <div className="task_setName">
-                            <label htmlFor="name" className="task_label">Имя нового задания</label><br />
+                            <label htmlFor="name" className="task_label">Заголовок</label><br />
                             <input onChange={(e) => setHeaderTask(e.target.value)}
                                 className="task_input"
                                 required
@@ -76,14 +72,19 @@ const TaskAddForm = (props) => {
                                 name="text"/>
                         </div>
 
-                        {/* <div className="form_setColumn">
-                            <label htmlFor="text" className="task_label">Статус</label><br />
-                            <textarea onChange={(e) => setStatusTask(e.target.value)}
-                                required
-                                name="text" 
+                        <div className="task_riority">
+                            <label htmlFor="text" className="task_label">Приоритет</label><br />
+                            <select onChange={(e) => setPriorityTask(e.target.value)}
                                 className="task_input" 
-                                id="text" />
-                        </div> */}
+                                required
+                                type="date" 
+                                name="text">
+                                <option value="all">Нет</option>
+                                <option value="low">Низкий</option>
+                                <option value="medium">Средний</option>
+                                <option value="high">Высокий</option>
+                            </select>
+                        </div>
             
                         <button type="submit" className="task_button">Создать</button>
                     </form>

@@ -1,0 +1,49 @@
+{
+  "projectSelection": [
+    {
+      "id": "c471c13d-2f91-4a79-a297-1eb660b35e89",
+      "name": "Сергей Чудинов",
+      "description": "1"
+    }
+  ],
+  "taskSelection": [
+    {
+      "id": "e9f1405c-7431-47fd-8017-036f8a3fb984",
+      "header": "Сергей Чудинов",
+      "description": "2",
+      "dateOfCreation": "2022-12-01T11:27:02.422Z",
+      "expirationDate": "2022-12-02",
+      "priority": "medium",
+      "attachedFiles": [
+        {
+          "id": "dfc2494f-7da8-4413-ba6c-cddfcef6cf41",
+          "name": "Sergey-foto.jpg"
+        }
+      ],
+      "projectId": "c471c13d-2f91-4a79-a297-1eb660b35e89",
+      "status": "Queue"
+    },
+    {
+      "id": "100709b7-0bf7-4fa9-bec2-24bb694c0109",
+      "header": "Сергей Чудинов",
+      "description": "3",
+      "dateOfCreation": "2022-12-01T11:27:06.861Z",
+      "expirationDate": "2022-12-02",
+      "priority": "high",
+      "attachedFiles": [],
+      "projectId": "c471c13d-2f91-4a79-a297-1eb660b35e89",
+      "status": "Development"
+    },
+    {
+      "id": "d72738e5-449a-4df3-8717-0c4eeb6d20e8",
+      "header": "Сергей Чудинов",
+      "description": "1",
+      "dateOfCreation": "2022-12-01T12:11:35.912Z",
+      "expirationDate": "2022-12-14",
+      "priority": "low",
+      "attachedFiles": [],
+      "projectId": "c471c13d-2f91-4a79-a297-1eb660b35e89",
+      "status": "Development"
+    }
+  ]
+}

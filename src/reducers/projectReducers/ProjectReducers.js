@@ -26,12 +26,7 @@ const projectsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 projects: [...state.projects, action.payload]
-            }
-        case 'PROJECTS_FILTER':
-            return {
-                ...state,
-                filters: action.payload
-            }          
+            }         
         default: return state
     }
 }

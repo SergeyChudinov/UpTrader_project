@@ -1,24 +1,17 @@
 import {useHttp} from '../../hooks/http.hook';
-
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-
 import { v4 as uuidv4 } from 'uuid';
-
 import { projectsFetchingError, projectsAdd } from '../../actions';
 
 import './ProjectAddForm.css';
 import cross from '../../assets/cross.png';
-// import Spinner from '../spinner/Spinner';
 
 const ProjectsAddForm = (props) => {
     const dispatch = useDispatch();
     const {request} = useHttp();
-
     const [nameProject, setNameProject] = useState('');
     const [descriptionProject, setDescriptionProject] = useState('');
-    
-    // const [showModal, setShowModal] = useState(props.show);
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -50,8 +43,7 @@ const ProjectsAddForm = (props) => {
                                 type="text" 
                                 name="name" 
                                 id="name"/>
-                        </div>
-            
+                        </div>            
                         <div className="form_setDescription">
                             <label htmlFor="text" className="form_setDescription_label">Описание</label><br />
                             <textarea onChange={(e) => setDescriptionProject(e.target.value)}
@@ -59,8 +51,7 @@ const ProjectsAddForm = (props) => {
                                 name="text" 
                                 className="form_setDescription_input" 
                                 id="text" />
-                        </div>
-            
+                        </div>            
                         <button type="submit" className="form_button">Создать</button>
                     </form>
                 </div>
