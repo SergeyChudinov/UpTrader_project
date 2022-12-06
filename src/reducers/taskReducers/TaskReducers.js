@@ -35,7 +35,7 @@ const tasksReducer = (state = initialState, action) => {
                 tasks: state.tasks.filter(el => el.projectId !== action.payload),
                 taskLoadingStatus: 'idle'
             }    
-        case 'TASKS_ADD':
+        case 'TASKS_ADD': 
             return {
                 ...state,
                 tasks: [...state.tasks, action.payload],

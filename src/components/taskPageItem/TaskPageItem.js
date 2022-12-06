@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { tasksFetching, tasksFetched, tasksFetchingError, tasksDelete, tasksUbdate } from '../../actions';
 
+import { useMemo } from 'react';
+
 import './TaskPageItem.css';
 
 import cross from '../../assets/cross.png';
@@ -14,7 +16,8 @@ const TaskPageItem = (props) => {
     const {tasks, taskLoadingStatus, activeFilter} = useSelector(state => state.tasks);
     const dispatch = useDispatch();
     const {request} = useHttp();
-    const [taskId, seTtaskId,] = useState(null);
+    const [taskId, setTaskId] = useState(null);
+    const [updateState, setUpdateState] = useState({});
     
     let filtredTasksId = tasks.filter(el => el.projectId === props.projectId);
     let queueFiltredTasks = (filtredTasksId.filter(el => el.status === "Queue"));
@@ -33,9 +36,17 @@ const TaskPageItem = (props) => {
                 return items;             
         }
     }
-    const filtredQueue = filtePost(queueFiltredTasks, activeFilter);
-    const filtredDevelopment = filtePost(developmentFiltredTasks, activeFilter);
-    const filtredDone = filtePost(doneFiltredTasks, activeFilter);
+    const filtredQueue = filtePost(queueFiltredTasks, activeFilter).sort(function(a, b) {
+        return new Date(a.dateOfCreation) - new Date(b.dateOfCreation);
+      });
+
+    const filtredDevelopment = filtePost(developmentFiltredTasks, activeFilter).sort(function(a, b) {
+        return new Date(a.dateOfCreation) - new Date(b.dateOfCreation);
+      });
+
+    const filtredDone = filtePost(doneFiltredTasks, activeFilter).sort(function(a, b) {
+        return new Date(a.dateOfCreation) - new Date(b.dateOfCreation);
+      });
 
     useEffect(() => {
         dispatch(tasksFetching());
@@ -54,7 +65,7 @@ const TaskPageItem = (props) => {
     }
     const getTimeRemaining = (data) => {
         const time = getTimeAtWork(data);
-        return `дней: ${time[0]} часов: ${time[1]}`  // минут: ${time[2]} секунд: ${time[3]}
+        return `дней: ${time[0]} часов: ${time[1]} `  // минут: ${time[2]} секунд: ${time[3]}
     }
     const toLocaleDateString = (date) => {
         return (new Date(date)).toLocaleDateString();
@@ -64,15 +75,11 @@ const TaskPageItem = (props) => {
     }
 
     const onDelete = (id) => {
-        console.log(id)
         request(`http://localhost:3001/taskSelection/${id}`, 'DELETE')
             .then(() => dispatch(tasksDelete(id)))
             .catch(() => dispatch(tasksFetchingError()));
     }
 
-    // const onDrag = (id) => {
-    //     seTtaskId(id);
-    // };
     const onDrop  = (e) => {
         if (e.target.closest('.task_column') && taskId) {
             const status = e.target.closest('.task_column').getAttribute('data-status');
@@ -81,7 +88,7 @@ const TaskPageItem = (props) => {
             request(`http://localhost:3001/taskSelection/${taskId}`, 'PATCH', json)
                 .then((data) => dispatch(tasksUbdate(data, taskId)))
                 .catch(() => dispatch(tasksFetchingError()));
-                seTtaskId(null);
+                setTaskId(null);
         }
     };
     function dragover_handler(e) {
@@ -89,7 +96,7 @@ const TaskPageItem = (props) => {
         e.dataTransfer.dropEffect = "move";
     }
     const showEditingModal = (id) => {
-        props.setShowEditingModal(true);
+        props.setShowModal(true);
         props.setTaskId(id)
     }
     
@@ -104,29 +111,51 @@ const TaskPageItem = (props) => {
             return <h5>Задач пока нет</h5>
         }
 
-        return arr.map(({id, header, description, dateOfCreation, expirationDate, priority, status}, i) => {
+        return arr.map(({id, header, description, dateOfCreation, expirationDate, priority, status, taskParentId, attachedFiles}, i) => {
             if (priority === '') {
                 priority = 'witout_priority'
             }
+            const taskNumberClass = classNames("task_top border_none", priority);
 
-            const taskClass = classNames("task_top border_none", priority);
+
+            let taskClass = 'task';
+            if (taskParentId) {
+                taskClass = 'sub_task';
+            }
+
+            console.log(getTimeRemaining(dateOfCreation))
+            console.log(dateOfCreation)
             return (
                 <>
-                    <div className="task" key={id}
-                        onDrag={() => seTtaskId(id)}
+                    <div className={taskClass} key={id}
+                        onDrag={() => setTaskId(id)}
                         draggable="true">
-                        <div className={taskClass}>
+                        <div className={taskNumberClass}>
                             <p className="task_number">Задача № {i + 1}</p>
                         </div>
                         <div className="task_bottom">
                             <h3 className="task_title">{header}</h3>
                             <p className="task_text">{description}</p>
-                            <p className="task_date">
-                                Дата создания {`${toLocaleDateString(dateOfCreation)}, ${toLocaleTimeString(dateOfCreation)}`}</p>
-                            <p className="task_date">
-                                Время в работе: {getTimeRemaining(dateOfCreation)}</p>
-                            <p className="task_date">
-                                Дата окончания: {expirationDate}</p>
+
+                            {!taskParentId ?
+                                <>
+                                    <p className="task_date">
+                                        Дата создания {`${toLocaleDateString(dateOfCreation)}, ${toLocaleTimeString(dateOfCreation)}`}</p>
+                                    <p className="task_date">
+                                        Время в работе: {getTimeRemaining(dateOfCreation)}</p>
+                                    <p className="task_date">
+                                        Дата окончания: {expirationDate}</p>
+                                </>  
+                            : null}
+
+                            {attachedFiles[0] ? 
+                                <>
+                                    <div className="task_file">
+                                        <p>Файлы:</p>
+                                        <p>{attachedFiles[0].name}</p>
+                                    </div>
+                                </>
+                            : null}
 
                             <button onClick={() => onDelete(id)} className='delate_task'>
                                 <img src={cross} alt="cross" />

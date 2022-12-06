@@ -4,46 +4,64 @@
       "id": "c471c13d-2f91-4a79-a297-1eb660b35e89",
       "name": "Сергей Чудинов",
       "description": "1"
+    },
+    {
+      "id": "50066615-c76c-40fe-a42d-497b3809f62e",
+      "name": "Ivan",
+      "description": "1"
+    },
+    {
+      "id": "6d7e55fc-c441-4157-85d1-6d8aabea951c",
+      "name": "Сергей Чудинов",
+      "description": "3"
     }
   ],
   "taskSelection": [
     {
-      "id": "e9f1405c-7431-47fd-8017-036f8a3fb984",
+      "id": "961ecfcc-3212-47fc-8433-9cfcc8380147",
       "header": "Сергей Чудинов",
-      "description": "2",
-      "dateOfCreation": "2022-12-01T11:27:02.422Z",
-      "expirationDate": "2022-12-02",
+      "description": "1",
+      "dateOfCreation": "2022-12-05T16:57:13.720Z",
+      "expirationDate": "2022-12-05",
       "priority": "medium",
       "attachedFiles": [
         {
-          "id": "dfc2494f-7da8-4413-ba6c-cddfcef6cf41",
+          "id": "dce0fa86-8d28-4bbe-ab12-b5ff68428595",
           "name": "Sergey-foto.jpg"
         }
       ],
       "projectId": "c471c13d-2f91-4a79-a297-1eb660b35e89",
+      "taskParentId": null,
       "status": "Queue"
     },
     {
-      "id": "100709b7-0bf7-4fa9-bec2-24bb694c0109",
+      "id": "a354fd71-61c7-4f42-ad0d-b72b3c4b4cf4",
       "header": "Сергей Чудинов",
-      "description": "3",
-      "dateOfCreation": "2022-12-01T11:27:06.861Z",
-      "expirationDate": "2022-12-02",
-      "priority": "high",
-      "attachedFiles": [],
-      "projectId": "c471c13d-2f91-4a79-a297-1eb660b35e89",
-      "status": "Development"
-    },
-    {
-      "id": "d72738e5-449a-4df3-8717-0c4eeb6d20e8",
-      "header": "Сергей Чудинов",
-      "description": "1",
-      "dateOfCreation": "2022-12-01T12:11:35.912Z",
-      "expirationDate": "2022-12-14",
+      "description": "2",
+      "dateOfCreation": "2022-12-05T16:57:23.163Z",
+      "expirationDate": "2022-12-05",
       "priority": "low",
       "attachedFiles": [],
       "projectId": "c471c13d-2f91-4a79-a297-1eb660b35e89",
-      "status": "Development"
+      "taskParentId": null,
+      "status": "Queue"
+    },
+    {
+      "id": "d051b06f-ce83-4f51-b31b-ca75ac90bd76",
+      "header": "Сергей Чудинов",
+      "description": "1-2",
+      "dateOfCreation": "2022-12-05T16:57:13.720Z",
+      "expirationDate": "",
+      "priority": "medium",
+      "attachedFiles": [
+        {
+          "id": "ae9d1844-06e1-4b9b-853c-7c9b53706a1f",
+          "name": "Sergey-foto.jpg"
+        }
+      ],
+      "projectId": "c471c13d-2f91-4a79-a297-1eb660b35e89",
+      "taskParentId": "961ecfcc-3212-47fc-8433-9cfcc8380147",
+      "status": "Queue"
     }
   ]
 }
