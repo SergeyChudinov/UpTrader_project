@@ -6,7 +6,6 @@ import { tasksFetchingError, tasksUbdate } from '../../actions';
 
 import './TaskEditingForm.css';
 import cross from '../../assets/cross.png';
-import file from '../../assets/file.png';
 
 const TaskEditingForm = (props) => {
     const {tasks} = useSelector(state => state.tasks);
@@ -24,6 +23,7 @@ const TaskEditingForm = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log('attachedFiles', attachedFilesTask)
+
         const obj = {
             id: props.id,
             header: `${headerTask}`,
@@ -34,12 +34,14 @@ const TaskEditingForm = (props) => {
             attachedFiles: attachedFilesTask,
 
             projectId: props.projectId,
+            taskParentId: foundTask.taskParentId ? foundTask.taskParentId : null,
             status: foundTask.status
         }
         const json = JSON.stringify(obj)
         request(`http://localhost:3001/taskSelection/${props.id}`, 'PUT', json)
             .then(data => dispatch(tasksUbdate(data, props.id)))
-            .catch(() => dispatch(tasksFetchingError()))
+            .catch(() => dispatch(tasksFetchingError()));
+        document.querySelector('.close_modal').click();
     }
 
     const setHeader = (value) => {
@@ -75,11 +77,22 @@ const TaskEditingForm = (props) => {
         e.target.previousElementSibling.textContent = name;
     }
 
+    const addSubtask = () => {
+        props.setSubtaskId(uuidv4());
+        props.setShowModal(false);
+        props.setShowModal(true);
+    }
+
+    const closeModal = () => {
+        props.setShowModal(false);
+        props.setTaskId(null);
+    }
+
     const renderItems = () => {
         return (
             <div className='modal'>
                 <div className='modal_block'>
-                    <button className='close_modal' onClick={() => props.setShowEditingModal(false)}>
+                    <button className='close_modal' onClick={closeModal}>
                         <img src={cross} alt="cross" />
                     </button>
                     <form onSubmit={(e) => handleSubmit(e)}
@@ -103,30 +116,37 @@ const TaskEditingForm = (props) => {
                                 value={foundTask.description}/>
                         </div>
 
-                        <div className="task_setExpirationDate">
-                            <label htmlFor="text" className="task_label">Дата окончания</label><br />
-                            <input onChange={(e) => setExpirationDate(e.target.value)}
-                                className="task_input" 
-                                required
-                                type="date" 
-                                name="text"
-                                value={foundTask.expirationDate}/>
-                        </div>
+                        {!foundTask.taskParentId ?
+                            <>
+                                <div className="task_setExpirationDate">
+                                    <label htmlFor="text" className="task_label">Дата окончания</label><br />
+                                    <input onChange={(e) => setExpirationDate(e.target.value)}
+                                        className="task_input" 
+                                        required
+                                        type="date" 
+                                        name="text"
+                                        value={foundTask.expirationDate}/>
+                                </div>
 
-                        <div className="task_riority">
-                            <label htmlFor="text" className="task_label">Приоритет</label><br />
-                            <select onChange={(e) => setPriority(e.target.value)}
-                                className="task_input" 
-                                required
-                                type="date" 
-                                name="text"
-                                value={foundTask.priority}>
-                                <option value="all">Нет</option>
-                                <option value="low">Низкий</option>
-                                <option value="medium">Средний</option>
-                                <option value="high">Высокий</option>
-                            </select>
-                        </div>
+                                <div className="task_riority">
+                                    <label htmlFor="text" className="task_label">Приоритет</label><br />
+                                    <select onChange={(e) => setPriority(e.target.value)}
+                                        className="task_input" 
+                                        required
+                                        type="date" 
+                                        name="text"
+                                        value={foundTask.priority}>
+                                        <option value="all">Нет</option>
+                                        <option value="low">Низкий</option>
+                                        <option value="medium">Средний</option>
+                                        <option value="high">Высокий</option>
+                                    </select>
+                                </div>
+                            </>  
+                        : null}
+
+
+
 
                         <div className="file_upload">
 							<button type="button">Загрузить файл</button>
@@ -137,10 +157,18 @@ const TaskEditingForm = (props) => {
 						</div>
 
                         {foundTask.attachedFiles[0] ? 
-                            <div>{foundTask.attachedFiles[0].name}</div>
+                            <>
+                                <div>{foundTask.attachedFiles[0].name}</div>
+                            </>
                             : null
                         }
-                        
+
+                        {!foundTask.taskParentId ? 
+                            <>
+                                <button onClick={addSubtask}>добавить подзадачу</button><br/>
+                            </>     
+                            : null}
+
                         <button type="submit" className="task_button">Изменить</button>
                     </form>
                 </div>

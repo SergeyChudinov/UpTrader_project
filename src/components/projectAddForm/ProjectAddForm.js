@@ -23,7 +23,8 @@ const ProjectsAddForm = (props) => {
         const json = JSON.stringify(obj)
         request(`http://localhost:3001/projectSelection`, 'POST', json)
             .then(data => dispatch(projectsAdd(data)))
-            .catch(() => dispatch(projectsFetchingError()))
+            .catch(() => dispatch(projectsFetchingError()));
+        document.querySelector('.close_modal').click();
     }
 
     const renderItems = () => {

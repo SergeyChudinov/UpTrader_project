@@ -1,20 +1,23 @@
 import {useHttp} from '../../hooks/http.hook';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { tasksFetchingError, tasksAdd } from '../../actions';
 
-import './TaskAddForm.css';
+import './SubtaskAddForm.css';
 
 import cross from '../../assets/cross.png';
 
-const TaskAddForm = (props) => {
+const SubtaskAddForm = (props) => {
     const dispatch = useDispatch();
     const {request} = useHttp();
+    const {tasks,} = useSelector(state => state.tasks);
     const [headerTask, setHeaderTask,] = useState('');
     const [descriptionTask, setDescriptionTask,] = useState('');
     const [expirationDateTask, setExpirationDateTask] = useState('');
-    const [priorityTask, setPriorityTask] = useState('');
+
+    const foundTask = tasks.find(el => el.id === props.id);
+    console.log(foundTask)
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -22,13 +25,13 @@ const TaskAddForm = (props) => {
             id: uuidv4(),
             header: `${headerTask}`,
             description: `${descriptionTask}`,
-            dateOfCreation: new Date(),
+            dateOfCreation: foundTask.dateOfCreation,
             expirationDate: `${expirationDateTask}`,
-            priority: `${priorityTask}`,
+            priority: foundTask.priority,
             attachedFiles: [],
 
             projectId: props.projectId,
-            taskParentId: null,
+            taskParentId: props.id,
             status: "Queue"
         }
         const json = JSON.stringify(obj)
@@ -40,6 +43,8 @@ const TaskAddForm = (props) => {
 
     const closeModal = () => {
         props.setShowModal(false);
+        props.setSubtaskId(null);
+        props.setTaskId(null);
     }
 
     const renderItems = () => {
@@ -68,28 +73,14 @@ const TaskAddForm = (props) => {
                                 name="text"/>
                         </div>
 
-                        <div className="task_setExpirationDate">
+                        {/* <div className="task_setExpirationDate">
                             <label htmlFor="text" className="task_label">Дата окончания</label><br />
                             <input onChange={(e) => setExpirationDateTask(e.target.value)}
                                 className="task_input" 
                                 required
                                 type="date" 
                                 name="text"/>
-                        </div>
-
-                        <div className="task_riority">
-                            <label htmlFor="text" className="task_label">Приоритет</label><br />
-                            <select onChange={(e) => setPriorityTask(e.target.value)}
-                                className="task_input" 
-                                required
-                                type="date" 
-                                name="text">
-                                <option value="all">Нет</option>
-                                <option value="low">Низкий</option>
-                                <option value="medium">Средний</option>
-                                <option value="high">Высокий</option>
-                            </select>
-                        </div>
+                        </div> */}
             
                         <button type="submit" className="task_button">Создать</button>
                     </form>
@@ -105,4 +96,35 @@ const TaskAddForm = (props) => {
         </>
     )
 }
-export default TaskAddForm;
+export default SubtaskAddForm;
+
+
+
+// {!foundTask.taskParentId ?
+//     <>
+//         <div className="task_setExpirationDate">
+//             <label htmlFor="text" className="task_label">Дата окончания</label><br />
+//             <input onChange={(e) => setExpirationDate(e.target.value)}
+//                 className="task_input" 
+//                 required
+//                 type="date" 
+//                 name="text"
+//                 value={foundTask.expirationDate}/>
+//         </div>
+
+//         <div className="task_riority">
+//             <label htmlFor="text" className="task_label">Приоритет</label><br />
+//             <select onChange={(e) => setPriority(e.target.value)}
+//                 className="task_input" 
+//                 required
+//                 type="date" 
+//                 name="text"
+//                 value={foundTask.priority}>
+//                 <option value="all">Нет</option>
+//                 <option value="low">Низкий</option>
+//                 <option value="medium">Средний</option>
+//                 <option value="high">Высокий</option>
+//             </select>
+//         </div>
+//     </>  
+// : null}

@@ -4,9 +4,9 @@ import { useParams } from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import classNames from 'classnames';
 import { activeFilterChanged } from '../../actions';
-import TaskAddForm from '../taskAddForm/TaskAddForm';
-import TaskEditingForm from '../taskEditingForm/TaskEditingForm';
 import TaskPageItem from '../taskPageItem/TaskPageItem';
+
+import TaskForm from '../taskForm/TaskForm';
 
 import './TaskPage.css';
 
@@ -14,9 +14,9 @@ const TaskPage = () => {
     const {id} = useParams();
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
-    const [showEditingModal, setShowEditingModal] = useState(false);
     const [taskId, setTaskId] = useState(null);
     const {filters, activeFilter} = useSelector(state => state.tasks);
+    const [subtaskId, setSubtaskId] = useState(null);
 
 
 
@@ -52,15 +52,14 @@ const TaskPage = () => {
             <h2 className='task_header'>Страница с задачами</h2>
             {element}    
 
-            {<TaskPageItem key={id} projectId={id} setShowEditingModal={setShowEditingModal} setTaskId={setTaskId}/>}
+            {<TaskPageItem key={id} projectId={id} setShowModal={setShowModal} setTaskId={setTaskId}/>}
 
             <button className='add_project' onClick={() => setShowModal(showModal => !showModal)}>Добавить задачу</button>
+
             {showModal ? 
-                <TaskAddForm projectId={id} setShowModal={setShowModal}/> : null
+                <TaskForm projectId={id} id={taskId} subtaskId={subtaskId} setTaskId={setTaskId} setSubtaskId={setSubtaskId} setShowModal={setShowModal}/> : null
             }
-            {showEditingModal ? 
-                <TaskEditingForm projectId={id} setShowEditingModal={setShowEditingModal} id={taskId}/> : null
-            }
+
         </>
     )
 }
