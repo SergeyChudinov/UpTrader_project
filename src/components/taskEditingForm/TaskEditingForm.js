@@ -25,17 +25,16 @@ const TaskEditingForm = (props) => {
         console.log('attachedFiles', attachedFilesTask)
 
         const obj = {
-            id: props.id,
             header: `${headerTask}`,
             description: `${descriptionTask}`,
             dateOfCreation: foundTask.dateOfCreation,
             expirationDate: `${expirationDateTask}`,
             priority: `${priorityTask}`,
             attachedFiles: attachedFilesTask,
-
+            status: foundTask.status,
             projectId: props.projectId,
             taskParentId: foundTask.taskParentId ? foundTask.taskParentId : null,
-            status: foundTask.status
+            id: props.id
         }
         const json = JSON.stringify(obj)
         request(`http://localhost:3001/taskSelection/${props.id}`, 'PUT', json)
