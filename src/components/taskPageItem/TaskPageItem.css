@@ -9,17 +9,16 @@
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 20px;
     /* grid-template-rows: 1000px; */
-    min-height: 528px;
+    min-height: 100%;
 }
 .task_div{
-    min-height: 90%;
+
 }
 .task_column{
     min-height: 90%;
     border: 1px solid  rgb(164, 160, 160);
     box-shadow: 19px 15px 30px -20px #000000;
     border-radius: 5px;
-    /* min-height: 528px; */
     padding: 15px;
 }
 
@@ -40,8 +39,7 @@
 }
 .task_top{
     border-radius: 5px;
-    padding: 10px;
-    
+    padding: 10px;  
 }
 
 .task_bottom{

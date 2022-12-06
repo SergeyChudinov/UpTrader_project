@@ -18,50 +18,64 @@
   ],
   "taskSelection": [
     {
-      "id": "961ecfcc-3212-47fc-8433-9cfcc8380147",
       "header": "Сергей Чудинов",
-      "description": "1",
-      "dateOfCreation": "2022-12-05T16:57:13.720Z",
-      "expirationDate": "2022-12-05",
-      "priority": "medium",
-      "attachedFiles": [
-        {
-          "id": "dce0fa86-8d28-4bbe-ab12-b5ff68428595",
-          "name": "Sergey-foto.jpg"
-        }
-      ],
-      "projectId": "c471c13d-2f91-4a79-a297-1eb660b35e89",
-      "taskParentId": null,
-      "status": "Queue"
-    },
-    {
-      "id": "a354fd71-61c7-4f42-ad0d-b72b3c4b4cf4",
-      "header": "Сергей Чудинов",
-      "description": "2",
-      "dateOfCreation": "2022-12-05T16:57:23.163Z",
-      "expirationDate": "2022-12-05",
+      "description": "6",
+      "dateOfCreation": "2022-12-06T15:03:26.437Z",
+      "expirationDate": "2022-12-08",
       "priority": "low",
       "attachedFiles": [],
+      "status": "Queue",
       "projectId": "c471c13d-2f91-4a79-a297-1eb660b35e89",
       "taskParentId": null,
-      "status": "Queue"
+      "id": 1
     },
     {
-      "id": "d051b06f-ce83-4f51-b31b-ca75ac90bd76",
-      "header": "Сергей Чудинов",
-      "description": "1-2",
-      "dateOfCreation": "2022-12-05T16:57:13.720Z",
-      "expirationDate": "",
-      "priority": "medium",
-      "attachedFiles": [
-        {
-          "id": "ae9d1844-06e1-4b9b-853c-7c9b53706a1f",
-          "name": "Sergey-foto.jpg"
-        }
-      ],
+      "header": "Чудинов  Сергей Александрович",
+      "description": "2",
+      "dateOfCreation": "2022-12-06T15:03:37.896Z",
+      "expirationDate": "2022-12-17",
+      "priority": "low",
+      "attachedFiles": [],
+      "status": "Queue",
       "projectId": "c471c13d-2f91-4a79-a297-1eb660b35e89",
-      "taskParentId": "961ecfcc-3212-47fc-8433-9cfcc8380147",
-      "status": "Queue"
+      "taskParentId": null,
+      "id": 2
+    },
+    {
+      "header": "6",
+      "description": "6",
+      "dateOfCreation": "2022-12-06T15:03:50.683Z",
+      "expirationDate": "2022-12-09",
+      "priority": "high",
+      "attachedFiles": [],
+      "status": "Queue",
+      "projectId": "c471c13d-2f91-4a79-a297-1eb660b35e89",
+      "taskParentId": null,
+      "id": 3
+    },
+    {
+      "header": "7",
+      "description": "7",
+      "dateOfCreation": "2022-12-06T15:04:23.093Z",
+      "expirationDate": "2022-12-17",
+      "priority": "high",
+      "attachedFiles": [],
+      "status": "Queue",
+      "projectId": "c471c13d-2f91-4a79-a297-1eb660b35e89",
+      "taskParentId": null,
+      "id": 4
+    },
+    {
+      "header": "Сергей Чудинов",
+      "description": "1",
+      "dateOfCreation": "2022-12-06T15:03:37.896Z",
+      "expirationDate": "",
+      "priority": "low",
+      "attachedFiles": [],
+      "status": "Queue",
+      "projectId": "c471c13d-2f91-4a79-a297-1eb660b35e89",
+      "taskParentId": 2,
+      "id": 5
     }
   ]
 }

@@ -17,7 +17,7 @@ const TaskPageItem = (props) => {
     const dispatch = useDispatch();
     const {request} = useHttp();
     const [taskId, setTaskId] = useState(null);
-    const [updateState, setUpdateState] = useState({});
+    const [updateTask, seUpdateTask] = useState(props.updateTask);
     
     let filtredTasksId = tasks.filter(el => el.projectId === props.projectId);
     let queueFiltredTasks = (filtredTasksId.filter(el => el.status === "Queue"));
@@ -38,22 +38,37 @@ const TaskPageItem = (props) => {
     }
     const filtredQueue = filtePost(queueFiltredTasks, activeFilter).sort(function(a, b) {
         return new Date(a.dateOfCreation) - new Date(b.dateOfCreation);
-      });
-
+    });
     const filtredDevelopment = filtePost(developmentFiltredTasks, activeFilter).sort(function(a, b) {
         return new Date(a.dateOfCreation) - new Date(b.dateOfCreation);
-      });
-
+    });
     const filtredDone = filtePost(doneFiltredTasks, activeFilter).sort(function(a, b) {
         return new Date(a.dateOfCreation) - new Date(b.dateOfCreation);
-      });
+    });
+
+  
+
+    const searchEmp = (items, term) => {
+
+        if (typeof(term) === 'string' && term.length === 0) {
+            return items
+        }
+        const regExp = new RegExp(term, 'i');
+        return items.filter((item) => {
+            return regExp.test(item.header) || regExp.test(item.id)
+        })
+    }
+    
+    const searchQueue = searchEmp(filtredQueue, props.term);
+    const searchDevelopment = searchEmp(filtredDevelopment, props.term);
+    const searchDone = searchEmp(filtredDone, props.term);
 
     useEffect(() => {
         dispatch(tasksFetching());
         request("http://localhost:3001/taskSelection")
             .then(data => dispatch(tasksFetched(data)))
             .catch(() => dispatch(tasksFetchingError()))
-    }, []);
+    }, [updateTask]);
 
     const getTimeAtWork = (data) => {
         const t = Date.parse(new Date()) - Date.parse(data);
@@ -111,7 +126,7 @@ const TaskPageItem = (props) => {
             return <h5>Задач пока нет</h5>
         }
 
-        return arr.map(({id, header, description, dateOfCreation, expirationDate, priority, status, taskParentId, attachedFiles}, i) => {
+        return arr.map(({id, header, description, dateOfCreation, expirationDate, priority, status, taskParentId, attachedFiles}) => {
             if (priority === '') {
                 priority = 'witout_priority'
             }
@@ -123,15 +138,15 @@ const TaskPageItem = (props) => {
                 taskClass = 'sub_task';
             }
 
-            console.log(getTimeRemaining(dateOfCreation))
-            console.log(dateOfCreation)
+            // console.log(getTimeRemaining(dateOfCreation))
+            // console.log(dateOfCreation)
             return (
                 <>
                     <div className={taskClass} key={id}
                         onDrag={() => setTaskId(id)}
                         draggable="true">
                         <div className={taskNumberClass}>
-                            <p className="task_number">Задача № {i + 1}</p>
+                            <p className="task_number">Задача № {id}</p>
                         </div>
                         <div className="task_bottom">
                             <h3 className="task_title">{header}</h3>
@@ -170,9 +185,9 @@ const TaskPageItem = (props) => {
             )
         })
     }
-    const elQueue = renderTask(filtredQueue);
-    const elDevelopment = renderTask(filtredDevelopment);
-    const elDone = renderTask(filtredDone);
+    const elQueue = renderTask(searchQueue);
+    const elDevelopment = renderTask(searchDevelopment);
+    const elDone = renderTask(searchDone);
 
     return (
         <>

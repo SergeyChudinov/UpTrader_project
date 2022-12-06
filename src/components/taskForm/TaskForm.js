@@ -5,9 +5,7 @@ import SubtaskAddForm from '../subtaskAddForm/SubtaskAddForm';
 import './TaskForm.css';
 
 const TaskForm = (props) => {
-
-
-
+    
     const elements = () => {
         if (props.subtaskId) {
             console.log('SubtaskAddForm');
@@ -22,7 +20,7 @@ const TaskForm = (props) => {
         } else {
             console.log('TaskAddForm');
             return (
-                <TaskAddForm projectId={props.projectId} id={props.id} setTaskId={props.setTaskId} setShowModal={props.setShowModal}/>
+                <TaskAddForm projectId={props.projectId} id={props.id} setTaskId={props.setTaskId} setShowModal={props.setShowModal} setUpdateTask={props.setUpdateTask}/>
             )
         }
     }

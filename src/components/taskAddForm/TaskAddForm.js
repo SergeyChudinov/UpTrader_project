@@ -15,27 +15,30 @@ const TaskAddForm = (props) => {
     const [descriptionTask, setDescriptionTask,] = useState('');
     const [expirationDateTask, setExpirationDateTask] = useState('');
     const [priorityTask, setPriorityTask] = useState('');
+    const [updateTask, seUpdateTask] = useState({});
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const obj = {
-            id: uuidv4(),
+            // id: uuidv4(),
             header: `${headerTask}`,
             description: `${descriptionTask}`,
             dateOfCreation: new Date(),
             expirationDate: `${expirationDateTask}`,
             priority: `${priorityTask}`,
             attachedFiles: [],
-
+            status: "Queue",
             projectId: props.projectId,
-            taskParentId: null,
-            status: "Queue"
+            taskParentId: null           
         }
         const json = JSON.stringify(obj)
         request(`http://localhost:3001/taskSelection`, 'POST', json)
             .then(data => dispatch(tasksAdd(data)))
             .catch(() => dispatch(tasksFetchingError()));
         document.querySelector('.close_modal').click();
+        setTimeout(() => {
+            props.setUpdateTask({})
+        }, 500) 
     }
 
     const closeModal = () => {

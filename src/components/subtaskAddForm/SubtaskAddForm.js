@@ -22,17 +22,16 @@ const SubtaskAddForm = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         const obj = {
-            id: uuidv4(),
+            // id: uuidv4(),
             header: `${headerTask}`,
             description: `${descriptionTask}`,
             dateOfCreation: foundTask.dateOfCreation,
             expirationDate: `${expirationDateTask}`,
             priority: foundTask.priority,
             attachedFiles: [],
-
+            status: "Queue",
             projectId: props.projectId,
-            taskParentId: props.id,
-            status: "Queue"
+            taskParentId: props.id         
         }
         const json = JSON.stringify(obj)
         request(`http://localhost:3001/taskSelection`, 'POST', json)
