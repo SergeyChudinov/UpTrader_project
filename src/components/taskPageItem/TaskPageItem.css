@@ -3,23 +3,21 @@
     color: #000;
 }
 .container{
-    /* display: flex;
-    justify-content: space-between; */
-    display: grid;
+    display: flex;
+    justify-content: space-between;
+    /* display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: 20px;
-    /* grid-template-rows: 1000px; */
-    min-height: 100%;
+    grid-column-gap: 20px; */
 }
 .task_div{
-
+    width: 32%;    
 }
 .task_column{
-    min-height: 90%;
     border: 1px solid  rgb(164, 160, 160);
     box-shadow: 19px 15px 30px -20px #000000;
     border-radius: 5px;
     padding: 15px;
+    min-height: 400px;
 }
 
 .task{

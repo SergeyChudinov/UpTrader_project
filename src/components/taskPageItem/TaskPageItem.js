@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { tasksFetching, tasksFetched, tasksFetchingError, tasksDelete, tasksUbdate } from '../../actions';
 
-import { useMemo } from 'react';
-
 import './TaskPageItem.css';
 
 import cross from '../../assets/cross.png';
@@ -17,7 +15,7 @@ const TaskPageItem = (props) => {
     const dispatch = useDispatch();
     const {request} = useHttp();
     const [taskId, setTaskId] = useState(null);
-    const [updateTask, seUpdateTask] = useState(props.updateTask);
+    const [updateTask, setUpdateTask] = useState(props.updateTask);
     
     let filtredTasksId = tasks.filter(el => el.projectId === props.projectId);
     let queueFiltredTasks = (filtredTasksId.filter(el => el.status === "Queue"));
@@ -89,11 +87,18 @@ const TaskPageItem = (props) => {
         return (new Date(date)).toLocaleTimeString();
     }
 
-    const onDelete = (id) => {
+    const onDelete = async (id) => {
+        const childTasks = await request(`http://localhost:3001/taskSelection?taskParentId=${id}`, 'GET');
+
         request(`http://localhost:3001/taskSelection/${id}`, 'DELETE')
             .then(() => dispatch(tasksDelete(id)))
             .catch(() => dispatch(tasksFetchingError()));
+
+        childTasks.map(task => request(`http://localhost:3001/taskSelection/${task.id}`, 'DELETE')
+            .then(() => dispatch(tasksDelete(task.id)))
+            .catch(() => dispatch(tasksFetchingError())));
     }
+
 
     const onDrop  = (e) => {
         if (e.target.closest('.task_column') && taskId) {

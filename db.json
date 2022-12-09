@@ -1,81 +1,47 @@
 {
   "projectSelection": [
     {
-      "id": "c471c13d-2f91-4a79-a297-1eb660b35e89",
+      "id": "96607503-bf9c-43a1-be50-fa6c1ee6d50b",
       "name": "Сергей Чудинов",
       "description": "1"
-    },
-    {
-      "id": "50066615-c76c-40fe-a42d-497b3809f62e",
-      "name": "Ivan",
-      "description": "1"
-    },
-    {
-      "id": "6d7e55fc-c441-4157-85d1-6d8aabea951c",
-      "name": "Сергей Чудинов",
-      "description": "3"
     }
   ],
   "taskSelection": [
     {
-      "header": "Сергей Чудинов",
-      "description": "6",
-      "dateOfCreation": "2022-12-06T15:03:26.437Z",
-      "expirationDate": "2022-12-08",
+      "header": "Уборка в доме",
+      "description": "Генеральная уборка всего дома",
+      "dateOfCreation": "2022-12-09T09:08:12.110Z",
+      "expirationDate": "2022-12-10",
       "priority": "low",
       "attachedFiles": [],
       "status": "Queue",
-      "projectId": "c471c13d-2f91-4a79-a297-1eb660b35e89",
+      "projectId": "96607503-bf9c-43a1-be50-fa6c1ee6d50b",
       "taskParentId": null,
       "id": 1
     },
     {
-      "header": "Чудинов  Сергей Александрович",
-      "description": "2",
-      "dateOfCreation": "2022-12-06T15:03:37.896Z",
-      "expirationDate": "2022-12-17",
-      "priority": "low",
-      "attachedFiles": [],
-      "status": "Queue",
-      "projectId": "c471c13d-2f91-4a79-a297-1eb660b35e89",
-      "taskParentId": null,
-      "id": 2
-    },
-    {
-      "header": "6",
-      "description": "6",
-      "dateOfCreation": "2022-12-06T15:03:50.683Z",
-      "expirationDate": "2022-12-09",
-      "priority": "high",
-      "attachedFiles": [],
-      "status": "Queue",
-      "projectId": "c471c13d-2f91-4a79-a297-1eb660b35e89",
-      "taskParentId": null,
-      "id": 3
-    },
-    {
-      "header": "7",
-      "description": "7",
-      "dateOfCreation": "2022-12-06T15:04:23.093Z",
-      "expirationDate": "2022-12-17",
-      "priority": "high",
-      "attachedFiles": [],
-      "status": "Queue",
-      "projectId": "c471c13d-2f91-4a79-a297-1eb660b35e89",
-      "taskParentId": null,
-      "id": 4
-    },
-    {
-      "header": "Сергей Чудинов",
-      "description": "1",
-      "dateOfCreation": "2022-12-06T15:03:37.896Z",
+      "header": "Помыть окна",
+      "description": "Помыть окна",
+      "dateOfCreation": "2022-12-09T09:08:12.110Z",
       "expirationDate": "",
       "priority": "low",
       "attachedFiles": [],
       "status": "Queue",
-      "projectId": "c471c13d-2f91-4a79-a297-1eb660b35e89",
-      "taskParentId": 2,
-      "id": 5
+      "projectId": "96607503-bf9c-43a1-be50-fa6c1ee6d50b",
+      "taskParentId": 1,
+      "id": 2
+    },
+    {
+      "header": "Сходить за продуктами",
+      "description": "Купить продукты на плов",
+      "dateOfCreation": "2022-12-09T09:09:44.285Z",
+      "expirationDate": "2022-12-09",
+      "priority": "medium",
+      "attachedFiles": [],
+      "status": "Queue",
+      "projectId": "96607503-bf9c-43a1-be50-fa6c1ee6d50b",
+      "taskParentId": null,
+      "id": 3
     }
   ]
 }

@@ -28,35 +28,14 @@ const tasksReducer = (state = initialState, action) => {
                 ...state,
                 tasks: state.tasks.filter(el => el.id !== action.payload),
                 taskLoadingStatus: 'idle'
-            }
-        case 'TASKS_DELETED_ALL':
-            return {
-                ...state,
-                tasks: state.tasks.filter(el => el.projectId !== action.payload),
-                taskLoadingStatus: 'idle'
-            }    
+            }   
         case 'TASKS_ADD': 
             return {
                 ...state,
                 tasks: [...state.tasks, action.payload],
                 taskLoadingStatus: 'idle'
             }
-        case 'TASKS_FILTER':
-            return {
-                ...state,
-                // filters: action.payload,
-                taskLoadingStatus: 'idle'
-            }
         case 'TASKS_UBDATE':
-            return {
-                ...state,
-                tasks: state.tasks.map(
-                    (task) => task.id === action.taskId ? action.payload
-                                            : task
-                ),
-                taskLoadingStatus: 'idle'
-            }
-        case 'TASKS_PUT':
             return {
                 ...state,
                 tasks: state.tasks.map(

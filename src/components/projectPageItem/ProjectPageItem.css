@@ -2,6 +2,7 @@
     text-decoration: none;
     color: black;
     cursor: pointer;
+    width: 100%;
 }
 .card{
     display: flex;
@@ -16,4 +17,5 @@
 .cross_button{
     background-color: rgb(244, 235, 235);
     border: none;
+    cursor: pointer;
 }

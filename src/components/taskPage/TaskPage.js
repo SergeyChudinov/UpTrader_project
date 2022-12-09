@@ -25,10 +25,12 @@ const TaskPage = () => {
         <>
             <Link to="/" className='task_link'>Главная</Link>
             <h2 className='task_header'>Страница с задачами</h2>
-            <SearchPanel onUpdateSearch={onUpdateSearch}/><br />
-            <FilterPanel/> 
-            
-            <div className='add_task' onClick={() => setShowModal(showModal => !showModal)}>Добавить задачу</div>
+
+            <div className='panel_container'>
+                <SearchPanel onUpdateSearch={onUpdateSearch}/><br/>
+                <FilterPanel/>            
+                <div className='add_task' onClick={() => setShowModal(showModal => !showModal)}>Добавить задачу</div>
+            </div>
 
             {<TaskPageItem key={id} projectId={id} term={term} setShowModal={setShowModal} setTaskId={setTaskId} updateTask={updateTask}/>}
 

@@ -1,7 +1,7 @@
 import {useHttp} from '../../hooks/http.hook';
 import { useDispatch } from 'react-redux';
 import {useNavigate} from "react-router-dom";
-import { projectsFetchingError, projectsDelete, tasksFetchingError, tasksDeleteAll } from '../../actions';
+import { projectsFetchingError, projectsDelete, tasksFetchingError, tasksDelete } from '../../actions';
 
 import './ProjectPageItem.css';
 
@@ -12,15 +12,16 @@ const ProjectPageItem = ({name, description, id}) => {
     const {request} = useHttp();
     const navigate = useNavigate();
 
-    const onDelete = (id) => {    
-        const projectId = id;  
+    const onDelete = async (id) => {   
+        const childTasks = await request(`http://localhost:3001/taskSelection?projectId=${id}`, 'GET'); 
+
         request(`http://localhost:3001/projectSelection/${id}`, 'DELETE')
             .then(() => dispatch(projectsDelete(id)))
             .catch(() => dispatch(projectsFetchingError()));
 
-        // request(`http://localhost:3001/taskSelection/${projectId}`, 'DELETE')
-        //     .then(() => dispatch(tasksDeleteAll(id)))
-        //     .catch(() => dispatch(tasksFetchingError()));
+        childTasks.map(task => request(`http://localhost:3001/taskSelection/${task.id}`, 'DELETE')
+            .then(() => dispatch(tasksDelete(task.id)))
+            .catch(() => dispatch(tasksFetchingError())));
     }
     
     const openProject = (e) => {

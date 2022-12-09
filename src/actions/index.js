@@ -1,88 +1,68 @@
-export const projectsFetching = () => {  //
+export const projectsFetching = () => {
     return {
         type: 'PROJECTS_FETCHING'
     }
 }
-export const projectsFetched = (projects) => {  //
+export const projectsFetched = (projects) => {
     return {
         type: 'PROJECTS_FETCHED',
         payload: projects
     }
 }
-export const projectsFetchingError = () => {  //
+export const projectsFetchingError = () => {
     return {
         type: 'PROJECTS_FETCHING_ERROR'
     }
 }
-export const projectsDelete = (id) => {  //
+export const projectsDelete = (id) => {
     return {
         type: 'PROJECTS_DELETED',
         payload: id
     }
 }
-export const projectsAdd = (obj) => {  //
+export const projectsAdd = (obj) => {
     return {
         type: 'PROJECTS_ADD',
         payload: obj
     }
 }
 
-export const tasksFetching = () => {  //
+export const tasksFetching = () => {
     return {
         type: 'TASKS_FETCHING'
     }
 }
-export const tasksFetched = (projects) => {  //
+export const tasksFetched = (projects) => {
     return {
         type: 'TASKS_FETCHED',
         payload: projects
     }
 }
-export const tasksFetchingError = () => {  //
+export const tasksFetchingError = () => {
     return {
         type: 'TASKS_FETCHING_ERROR'
     }
 }
-export const tasksDelete = (id) => {  //
+export const tasksDelete = (id) => {
     return {
         type: 'TASKS_DELETED',
         payload: id
     }
 }
-export const tasksDeleteAll = (id) => { // -
-    return {
-        type: 'TASKS_DELETED_ALL',
-        payload: id
-    }
-}
-export const tasksAdd = (obj) => {  //
+export const tasksAdd = (obj) => {
     return {
         type: 'TASKS_ADD',
         payload: obj
     }
 }
-export const tasksFilter = (filter) => { // -
-    return {
-        type: 'TASKS_FILTER',
-        payload: filter
-    }
-}
-export const tasksUbdate = (data, id) => {  //
+export const tasksUbdate = (data, id) => {
     return {
         type: 'TASKS_UBDATE',
         payload: data,
         taskId: id
     }
 }
-export const tasksPut = (data, id) => { // -
-    return {
-        type: 'TASKS_PUT',
-        payload: data,
-        taskId: id
-    }
-}
-
-export const activeFilterChanged = (filter) => {  //
+export const activeFilterChanged = (filter) => {
     return {
         type: 'ACTIVE_FILTER_CHANGED',
         payload: filter

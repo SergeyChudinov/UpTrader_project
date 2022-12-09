@@ -1,7 +1,6 @@
 import {useHttp} from '../../hooks/http.hook';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { v4 as uuidv4 } from 'uuid';
 import { tasksFetchingError, tasksAdd } from '../../actions';
 
 import './TaskAddForm.css';
@@ -15,12 +14,11 @@ const TaskAddForm = (props) => {
     const [descriptionTask, setDescriptionTask,] = useState('');
     const [expirationDateTask, setExpirationDateTask] = useState('');
     const [priorityTask, setPriorityTask] = useState('');
-    const [updateTask, seUpdateTask] = useState({});
+    const [updateTask, setUpdateTask] = useState({});
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const obj = {
-            // id: uuidv4(),
             header: `${headerTask}`,
             description: `${descriptionTask}`,
             dateOfCreation: new Date(),
@@ -38,6 +36,7 @@ const TaskAddForm = (props) => {
         document.querySelector('.close_modal').click();
         setTimeout(() => {
             props.setUpdateTask({})
+            setUpdateTask({})
         }, 500) 
     }
 

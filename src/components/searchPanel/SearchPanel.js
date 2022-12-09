@@ -12,10 +12,10 @@ const SearchPanel = (props) => {
     return (
         <>
             <div className="search_body">
+                <p className="filter_text">Поиск по номеру задачи и заголовку</p>
                 <input onChange={onUpdateSearch}
                     type="text" 
                     className="search_panel"
-                    placeholder="Поиск по номеру задачи и заголовку"
                     value={term}/> 
             </div>
         </> 
